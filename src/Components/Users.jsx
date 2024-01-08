@@ -1,5 +1,6 @@
 //sample: useEffect(()=>{function()}, [dependency])
 import { useEffect, useState } from "react"
+import Counter from "./Counter";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -51,6 +52,7 @@ const Users = () => {
     }
     return (
         <div>
+            {id>10 && <Counter/>}
             <input type="text" value={id} onChange={e => setId(e.target.value)} placeholder="Enter id" />
             <button onClick={searchHandler}>Search</button>
             {!users.length && !error && <p>Loading...</p>}
