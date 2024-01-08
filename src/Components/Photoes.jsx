@@ -8,6 +8,7 @@ function Photoes() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        //avoid to extra performing of function
         const controller = new AbortController();
         const fetchPhotos = async () => {
             try {
