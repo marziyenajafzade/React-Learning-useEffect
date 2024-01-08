@@ -5,6 +5,7 @@ import Counter from "./Counter";
 const Users = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(false);
+    const [user, setUser] = useState("");
     // set dependency
     const [id, setId] = useState("");
 
@@ -47,12 +48,12 @@ const Users = () => {
         }, []); */
     const searchHandler = async () => {
         const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
-        const json = await res.json();
-        console.log(json)
+        const user = await res.json();
+        setUser(user);
     }
     return (
         <div>
-            {id>10 && <Counter/>}
+            {id > 10 && <Counter />}
             <input type="text" value={id} onChange={e => setId(e.target.value)} placeholder="Enter id" />
             <button onClick={searchHandler}>Search</button>
             {!users.length && !error && <p>Loading...</p>}
@@ -60,6 +61,11 @@ const Users = () => {
                 {users.map(user =>
                     <li key={user.id}>{user.name} {user.username}</li>
                 )}
+            </ul>
+            <br />
+            <h2>Name was searched</h2>
+            <ul>
+                <li key={user.id}>{user.name} {user.username}</li>
             </ul>
             {error && <p>Something went wrong!</p>}
         </div>
