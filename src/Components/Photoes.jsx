@@ -23,6 +23,9 @@ function Photoes() {
                 console.log(photoData);
                 setPhoto(photoData);
             } catch (err) {
+                if(err.name != "Abort Error"){
+                    setError(true)
+                }
                 setError(true);
                 console.error("Error fetching data:", err);
             } finally {
@@ -62,6 +65,7 @@ function Photoes() {
                 Search
             </button>
             {loading && <p>Loading...</p>}
+            <br/>
             {photo.id && (
                 <Badge bg="info" key={photo.id}>
                     {photo.title}
