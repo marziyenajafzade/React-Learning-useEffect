@@ -6,9 +6,11 @@ function App() {
   return (
     <>
       <h1 className="text-center">useEffect</h1>
-      <NavLink to="Photoes" className='btn ms-lg-3 fs-small btn-opt-nj border-0' type="button">Photoes</NavLink>
-      <NavLink to="/" className='btn ms-lg-3 fs-small btn-opt-nj border-0'>Users</NavLink>
-      <hr/>
+      <div className="text-center">
+        <NavLink to="Photoes" className='btn btn-primary mx-2' >Photoes</NavLink>
+        <NavLink to="/" className='btn btn-success mx-2'>Users</NavLink>
+      </div>
+      <hr />
       <Routes>
         <Route path="/" element={<Users />} />
         <Route path="Photoes" element={<Photoes />} />
